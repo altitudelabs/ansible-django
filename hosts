@@ -5,7 +5,7 @@ env=development
 localhost
 
 [dbservers]
-ec2-54-179-134-142.ap-southeast-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/altitudelabs.pem
+ec2-54-254-160-215.ap-southeast-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/altitudelabs.pem
 
 [webservers]
-ec2-54-179-134-142.ap-southeast-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/altitudelabs.pem
+ec2-54-254-160-215.ap-southeast-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/altitudelabs.pem

@@ -23,6 +23,22 @@
   when: run_django_db_migrations is defined and run_django_db_migrations
   tags: django.migrate
 
+- name: npm install
+  npm: path={{ project_path }}
+  tags: frontend
+
+- name: bower install
+  shell: bower install --allow-root
+  args:
+    chdir: "{{ project_path }}"
+  tags: frontend
+
+- name: Run Gulp build
+  shell: gulp build
+  args:
+    chdir: "{{ project_path }}"
+  tags: frontend
+
 - name: Run Django collectstatic
   django_manage:
     command: collectstatic

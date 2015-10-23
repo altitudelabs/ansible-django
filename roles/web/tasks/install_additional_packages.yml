@@ -3,4 +3,7 @@
 - name: Install additional packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
-    - libav-tools
+    - libpq-dev
+    - libxml2-dev # for lxml
+    - libxslt1-dev # for lxml
+    - libffi-dev

@@ -1,16 +1,34 @@
-ansible-django-stack
-====================
+Altitude Labs - Django
+======================
+
+Ansible Playbook designed for AWS, Python and Node environments.
+
+### AWS
+
+Spin up an AWS instance
+```
+ansible-playbook -i hosts aws.yml
+```
+
+### Node
+
+[TBD]
+
+### Django
 
 Ansible Playbook designed for environments running a Django app.  It can install and configure these applications that are commonly used in production Django deployments:
 
 - Nginx
 - Gunicorn
 - PostgreSQL
+- MySQL
+- MongoDB
 - Supervisor
 - Virtualenv
-- Memcached
 - Celery
 - RabbitMQ
+- Node (npm and bower)
+- Gulp
 
 Default settings are stored in ```roles/role_name/vars/main.yml```.  Environment-specific settings are in the ```env_vars``` directory.
 
@@ -121,7 +139,7 @@ Next, create a playbook for the server type. See [webservers.yml](webservers.yml
 Run the playbook:
 
 ```
-ansible-playbook -i development webservers.yml
+ansible-playbook -i hosts webservers.yml
 ```
 
 You can also provision an entire site by combining multiple playbooks.  For example, I created a playbook called `site.yml` that includes both the `webservers.yml` and `dbservers.yml` playbook.
@@ -135,7 +153,7 @@ A few notes here:
 You can then provision the entire site with this command:
 
 ```
-ansible-playbook -i development site.yml
+ansible-playbook -i hosts site.yml
 ```
 
 If you're testing with vagrant, you can use this command:
@@ -148,7 +166,7 @@ ansible-playbook -i vagrant_ansible_inventory_default --private-key=~/.vagrant.d
 
 ### Creating a swap file
 
-By default, the playbook won't create a swap file.  To create/enable swap, simply change the values in `roles/base/vars/main.yml`. 
+By default, the playbook won't create a swap file.  To create/enable swap, simply change the values in `roles/base/vars/main.yml`.
 
 You can also override these values in the main playbook, for example:
 

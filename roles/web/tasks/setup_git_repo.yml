@@ -1,5 +1,13 @@
 ---
 
+- name: Add ssh agent line to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: SSH_AUTH_SOCK
+    line: Defaults env_keep += "SSH_AUTH_SOCK"
+  tags: git
+
 - name: Setup the Git repo
   git: repo={{ git_repo }}
        version="{{ git_branch }}"

@@ -5,10 +5,17 @@ setup_git_repo: yes
 git_branch: master
 
 
-# Database settings.
+# PostgreSQL
 db_user: "{{ application_name }}"
 db_name: "{{ application_name }}"
 db_password: password
+
+
+# MySQL
+mysql_db_user: '{{ application_user }}'
+mysql_db_name: metisa
+mysql_db_password: Altitude123!
+mysql_port: 3306
 
 
 # Gunicorn settings. For the number of workers, a good rule to follow is

@@ -1,0 +1,21 @@
+---
+
+- name: Install node and npm
+  apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
+  with_items:
+    - nodejs
+    - npm
+  tags: node
+
+- name: Symlink /usr/bin/nodejs to /usr/bin/node
+  action: file src=/usr/bin/nodejs dest=/usr/bin/node state=link
+  tags: node
+
+- name: Install frontend dependencies
+  npm: >
+   name={{ item }}
+   state=present
+   global=yes
+  with_items:
+    - bower
+  tags: node

@@ -14,7 +14,7 @@
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
   notify:
-  - restart mysql
+    - restart mysql
   tags:
     - mysql
 
@@ -32,3 +32,13 @@
   mysql_user: name={{ mysql_db_user }} password={{ mysql_db_password }} priv=*.*:ALL host='%' state=present
   tags:
     - mysql
+
+- name: Copy local DB to server
+  copy: src={{ mysql_dump_db_path }} dest=/webapps/db.sql
+  tags: exportdb
+  when: mysql_dump_db_path is defined
+
+- name: Import database into Mysql
+  mysql_db: name=metisa state=import target=/webapps/db.sql
+  tags: exportdb
+  when: mysql_dump_db_path is defined

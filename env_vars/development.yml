@@ -16,7 +16,7 @@ mysql_db_user: "{{ db_user }}"
 mysql_db_name: "{{ db_name }}"
 mysql_db_password: "{{ db_password }}"
 mysql_port: 3306
-
+mysql_dump_db_path: /Users/justinyek/Sites/sieve/factorial.sql
 
 # Gunicorn settings. For the number of workers, a good rule to follow is
 # 2 x number of CPUs + 1

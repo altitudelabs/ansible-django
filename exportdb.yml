@@ -1,0 +1,13 @@
+---
+
+- name: Export local database.sql file to dbserver
+  hosts: dbservers
+  sudo: yes
+  sudo_user: root
+  remote_user: ubuntu
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/{{ env }}.yml
+
+  roles:
+    - exportdb

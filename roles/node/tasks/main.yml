@@ -18,4 +18,5 @@
    global=yes
   with_items:
     - bower
+    - gulp
   tags: node

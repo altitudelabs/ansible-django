@@ -1,0 +1,16 @@
+---
+
+# Ports existing db.sql file to Database server
+- name: Create root directory
+  file: path=/webapps state=directory
+  tags: exportdb
+
+- name: Copy local DB to server
+  copy: src={{ mysql_local_db_path }} dest=/webapps/db.sql # Update DB path
+  when: mysql_local_db_path is defined
+  tags: exportdb
+
+- name: Import database into Mysql
+  mysql_db: name=metisa state=import target=/webapps/db.sql
+  when: mysql_local_db_path is defined
+  tags: exportdb

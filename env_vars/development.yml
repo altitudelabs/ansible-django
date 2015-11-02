@@ -16,7 +16,7 @@ mysql_db_user: "{{ db_user }}"
 mysql_db_name: "{{ db_name }}"
 mysql_db_password: "{{ db_password }}"
 mysql_port: 3306
-mysql_local_db_path: /Users/justinyek/Sites/sieve/factorial.sql
+mysql_local_db_path: /Users/justinyek/Sites/sieve/metisa.sql
 
 # Gunicorn settings. For the number of workers, a good rule to follow is
 # 2 x number of CPUs + 1
@@ -58,6 +58,6 @@ django_secret_key: "akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#"
 
 broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@localhost/{{ rabbitmq_application_vhost }}"
 
-run_django_syncdb: yes
+run_django_makemigrations: yes
 run_django_db_migrations: yes
 run_django_collectstatic: yes

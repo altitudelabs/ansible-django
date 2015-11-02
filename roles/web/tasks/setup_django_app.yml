@@ -3,15 +3,15 @@
 - name: Install packages required by the Django app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
 
-- name: Run the Django syncdb command
+- name: Run the Django make migrations command
   django_manage:
-    command: syncdb
+    command: makemigrations
     app_path: "{{ project_path }}"
     virtualenv: "{{ virtualenv_path }}"
     settings: "{{ django_settings_file }}"
   environment: django_environment
-  when: run_django_syncdb is defined and run_django_syncdb
-  tags: django.syncdb
+  when: run_django_makemigrations is defined and run_django_makemigrations
+  tags: django.makemigrations
 
 - name: Run Django database migrations
   django_manage:

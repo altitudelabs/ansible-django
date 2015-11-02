@@ -1,0 +1,12 @@
+---
+
+- name: Set production environment variable
+  shell: "export PYTHON_ENV=production"
+
+- name: Create scrapy script
+  template: src=scrapy.sh
+            dest=/webapps.scrapy.sh
+            backup=yes
+
+- name: Setup cron
+  cron: minute="0" hour="*" job="/webapps/scrapy.sh" user="root"
